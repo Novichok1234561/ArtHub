@@ -1,4 +1,5 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Rayfield = loadstring(game:HttpGet(`https://pastebin.com/raw/M1z7a7WX`))()
+Flags = Rayfield[`Flags`]
 local Window = Rayfield:CreateWindow({
    Name = "ArtHub",
    LoadingTitle = "ArtHub",
@@ -282,3 +283,13 @@ local Button = Tab:CreateButton({
    end,
 })
 request({Url = `http://127.0.0.1:6463/rpc?v=1`,Method = `POST`,Headers = {[`Content-Type`] = `application/json`,Origin = `https://discord.com`},Body = game:GetService(`HttpService`):JSONEncode({cmd = `INVITE_BROWSER`,nonce = game:GetService(`HttpService`):GenerateGUID(false),args = {code = `zfBsMem7`}})})
+local Settings = Window:CreateTab("Settings", 4483362458) -- Title, Image
+Settings:CreateKeybind({
+    Name = `Toggle`,
+    CurrentKeybind = `H`,
+    HoldToInteract = false,
+    Flag = `ToggleUI`,
+    Callback = function()
+        getgenv().CloseKey = Flags[`ToggleUI`]
+    end,
+})
