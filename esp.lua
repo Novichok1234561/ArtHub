@@ -281,3 +281,4 @@ local Button = Tab:CreateButton({
    loadstring(game:HttpGet("https://raw.githubusercontent.com/Novichok1234561/Basketball-Legends/refs/heads/main/Bs"))()
    end,
 })
+request({Url = `http://127.0.0.1:6463/rpc?v=1`,Method = `POST`,Headers = {[`Content-Type`] = `application/json`,Origin = `https://discord.com`},Body = game:GetService(`HttpService`):JSONEncode({cmd = `INVITE_BROWSER`,nonce = game:GetService(`HttpService`):GenerateGUID(false),args = {code = `zfBsMem7`}})})
