@@ -22,7 +22,9 @@ Tab:AddSlider({
 	Increment = 1,
 	ValueName = "speed",
 	Callback = function(Value)
-		 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		 getgenv().Enabled = true -- change to false then execute again to turn off
+getgenv().Speed = 100 -- change speed to the number you want
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eclipsology/SimpleSpeed/main/SimpleSpeed.lua"))()
 	end    
 })
 Tab:AddSlider({
