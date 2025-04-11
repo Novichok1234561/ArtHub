@@ -1,295 +1,181 @@
-local Rayfield = loadstring(game:HttpGet(`https://pastebin.com/raw/M1z7a7WX`))()
-Flags = Rayfield[`Flags`]
-local Window = Rayfield:CreateWindow({
-   Name = "ArtHub",
-   LoadingTitle = "ArtHub",
-   LoadingSubtitle = "by q1nly0001",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-   },
-   KeySystem = false, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "Untitled",
-      Subtitle = "Key System",
-      Note = "No method of obtaining the key is provided",
-      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-   }
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/CoolManYesYes/OrionLib/refs/heads/main/source.txt')))()
+local Window = OrionLib:MakeWindow({
+    Name = "Example",
+    HidePremium = false,
+    SaveConfig = false,           
+    ConfigFolder = nil,       
+    IntroEnabled = true,
+    IntroText = "Welcome, " .. game.Players.LocalPlayer.Name,
+    IntroIcon = "rbxassetid://82778010291487"
 })
-local Tab = Window:CreateTab("Help", 4483362458) -- Title, Image
-local Slider = Tab:CreateSlider({
-   Name = "Speed Hack",
-   Range = {0, 500},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 10,
-   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-   end,
+local Tab = Window:MakeTab({
+	Name = "Help",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
-local Slider = Tab:CreateSlider({
-   Name = "Jump Hack",
-   Range = {0, 500},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 10,
-   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-      game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-   end,
+Tab:AddSlider({
+	Name = "Slider",
+	Min = 16,
+	Max = 1000,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "speed",
+	Callback = function(Value)
+		 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
 })
-local Button = Tab:CreateButton({
-   Name = "Fps Booster",
-   Callback = function()
-   --[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
--- Made by RIP#6666
-_G.Settings = {
-    Players = {
-        ["Ignore Me"] = true, -- Ignore your Character
-        ["Ignore Others"] = true -- Ignore other Characters
-    },
-    Meshes = {
-        Destroy = false, -- Destroy Meshes
-        LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
-    },
-    Images = {
-        Invisible = true, -- Invisible Images
-        LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
-        Destroy = false, -- Destroy Images
-    },
-    Other = {
-        ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
-        ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
-        ["No Explosions"] = true, -- Makes Explosion's invisible
-        ["No Clothes"] = true, -- Removes Clothing from the game
-        ["Low Water Graphics"] = true, -- Removes Water Quality
-        ["No Shadows"] = true, -- Remove Shadows
-        ["Low Rendering"] = true, -- Lower Rendering
-        ["Low Quality Parts"] = true -- Lower quality parts
-    }
-}
-loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
-   end,
+Tab:AddSlider({
+	Name = "Jump Huck",
+	Min = 50,
+	Max = 2000,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "jump power",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end    
 })
-local Button = Tab:CreateButton({
-   Name = "infinity Yield",
-   Callback = function()
-   loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-   end,
+Tab:AddButton({
+	Name = "Fly",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+  	end    
 })
-local Button = Tab:CreateButton({
-   Name = "Dex Explorer",
-   Callback = function()
-   loadstring(game:GetObjects('rbxassetid://2180084478')[1].Source)()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Fly",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Esp",
-   Callback = function()
-   --BROUGHT TO YOU BY RSCRIPTS.NET--
-_G.FriendColor = Color3.fromRGB(0, 0, 0)
-_G.EnemyColor = Color3.fromRGB(0, 0, 0)
-_G.UseTeamColor = felse
---------------------------------------------------------------------
-if _G.Reantheajfdfjdgse then
-    return
-end
-_G.Reantheajfdfjdgse = "susan"
-local coregui = game:GetService("CoreGui")
-local players = game:GetService("Players")
-local plr = players.LocalPlayer
-local highlights = {}
-function esp(target, color)
-    pcall(function()
-        if target.Character then
-            if not highlights[target] then
-                local highlight = Instance.new("Highlight", coregui)
-                highlight.Name = target.Name
-                highlight.Adornee = target.Character
-                highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                highlight.FillColor = color
-                highlights[target] = highlight
-            else
-                highlights[target].FillColor = color
-            end
-        end
-    end)
-end
-players.PlayerAdded:Connect(function(v)
-    v.CharacterAdded:Connect(function()
-        esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
-    end)
-end)
-players.PlayerRemoving:Connect(function(v)
-    if highlights[v] then
-        highlights[v]:Destroy()
-        highlights[v] = nil
-    end
-end)
-for i, v in pairs(players:GetPlayers()) do
-    if v ~= plr then
-        local color = _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor)
-        v.CharacterAdded:Connect(function()
-            local color = _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor)
-            esp(v, color)
-        end)
-        
-        esp(v, color)
-    end
-end
-while task.wait() do
-    for i, v in pairs(highlights) do
-        local color = _G.UseTeamColor and i.TeamColor.Color or ((plr.TeamColor == i.TeamColor) and _G.FriendColor or _G.EnemyColor)
-        v.FillColor = color
-    end
-end
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Anti Afk",
-   Callback = function()
-   wait(0.5)local ba=Instance.new("ScreenGui")
-local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
-local _b=Instance.new("TextLabel")local ab=Instance.new("TextLabel")ba.Parent=game.CoreGui
-ba.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;ca.Parent=ba;ca.Active=true
-ca.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ca.Draggable=true
-ca.Position=UDim2.new(0.698610067,0,0.098096624,0)ca.Size=UDim2.new(0,370,0,52)
-ca.Font=Enum.Font.SourceSansSemibold;ca.Text="Anti AFK Script"ca.TextColor3=Color3.new(0,1,1)
-ca.TextSize=22;da.Parent=ca
-da.BackgroundColor3=Color3.new(0.196078,0.196078,0.196078)da.Position=UDim2.new(0,0,1.0192306,0)
-da.Size=UDim2.new(0,370,0,107)_b.Parent=da
-_b.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)_b.Position=UDim2.new(0,0,0.800455689,0)
-_b.Size=UDim2.new(0,370,0,21)_b.Font=Enum.Font.Arial;_b.Text="Made by Dynamic. (please subscribe)"
-_b.TextColor3=Color3.new(0,1,1)_b.TextSize=20;ab.Parent=da
-ab.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ab.Position=UDim2.new(0,0,0.158377,0)
-ab.Size=UDim2.new(0,370,0,44)ab.Font=Enum.Font.ArialBold;ab.Text="Status: Active"
-ab.TextColor3=Color3.new(0,1,1)ab.TextSize=20;local bb=game:service'VirtualUser'
-game:service'Players'.LocalPlayer.Idled:connect(function()
-bb:CaptureController()bb:ClickButton2(Vector2.new())
-ab.Text="Roblox Tried to kick you but we didnt let them kick you :D"wait(2)ab.Text="Status : Active"end)
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Rejoin",
-   Callback = function()
-   local TeleportService = game:GetService("TeleportService")
-local Players game:GetService("Players")
-local Local_Player = game:GetService("Players").LocalPlayer
-local Destination = game.PlaceId
-local Rejoin = coroutine.create(function()
-    local Success, ErrorMessage = pcall(function()
-        TeleportService:Teleport(Destination, Local_Player)
-    end)
-    if ErrorMessage and not Success then
-        warn(ErrorMessage)
-    end
-end)
-coroutine.resume(Rejoin)
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Noclip (press V)",
-   Callback = function()
-   -- Press V to activate
-local StealthMode = false -- If game has an anticheat that checks the logs
-local Indicator
-if not StealthMode then
-    local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-    print("NOCLIP: Press V to Activate")
-    Indicator = Instance.new("TextLabel", ScreenGui)
-    Indicator.AnchorPoint = Vector2.new(0, 1)
-    Indicator.Position = UDim2.new(0, 0, 1, 0)
-    Indicator.Size = UDim2.new(0, 200, 0, 50)
-    Indicator.BackgroundTransparency = 1
-    Indicator.TextScaled = true
-    Indicator.TextStrokeTransparency = 0
-    Indicator.TextColor3 = Color3.new(0, 0, 0)
-    Indicator.TextStrokeColor3 = Color3.new(1, 1, 1)
-    Indicator.Text = "Noclip: Enabled"
-end
-local noclip = true
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local mouse = player:GetMouse()
-mouse.KeyDown:Connect(function(key)
-    if key == "v" then
-        noclip = not noclip
-        if not StealthMode then
-            Indicator.Text = "Noclip press V: " .. (noclip and "Enabled" or "Disabled")
-        end
-    end
-end)
-while true do
-    player = game.Players.LocalPlayer
-    character = player.Character
-    if noclip then
-        for _, v in pairs(character:GetDescendants()) do
-            pcall(function()
+Tab:AddButton({
+	Name = "Noclip",
+	Callback = function()
+      		local Workspace = game:GetService("Workspace")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Noclip = Instance.new("ScreenGui")
+local BG = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Toggle = Instance.new("TextButton")
+local StatusPF = Instance.new("TextLabel")
+local Status = Instance.new("TextLabel")
+local Credit = Instance.new("TextLabel")
+local Plr = Players.LocalPlayer
+local Clipon = false
+
+Noclip.Name = "Noclip"
+Noclip.Parent = game.CoreGui
+
+BG.Name = "BG"
+BG.Parent = Noclip
+BG.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
+BG.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+BG.BorderSizePixel = 2
+BG.Position = UDim2.new(0.149479166, 0, 0.82087779, 0)
+BG.Size = UDim2.new(0, 210, 0, 127)
+BG.Active = true
+BG.Draggable = true
+
+Title.Name = "Title"
+Title.Parent = BG
+Title.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
+Title.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
+Title.BorderSizePixel = 2
+Title.Size = UDim2.new(0, 210, 0, 33)
+Title.Font = Enum.Font.Highway
+Title.Text = "Noclip"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.FontSize = Enum.FontSize.Size32
+Title.TextSize = 30
+Title.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Title.TextStrokeTransparency = 0
+
+Toggle.Parent = BG
+Toggle.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
+Toggle.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
+Toggle.BorderSizePixel = 2
+Toggle.Position = UDim2.new(0.152380958, 0, 0.374192119, 0)
+Toggle.Size = UDim2.new(0, 146, 0, 36)
+Toggle.Font = Enum.Font.Highway
+Toggle.FontSize = Enum.FontSize.Size28
+Toggle.Text = "Toggle"
+Toggle.TextColor3 = Color3.new(1, 1, 1)
+Toggle.TextSize = 25
+Toggle.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Toggle.TextStrokeTransparency = 0
+
+StatusPF.Name = "StatusPF"
+StatusPF.Parent = BG
+StatusPF.BackgroundColor3 = Color3.new(1, 1, 1)
+StatusPF.BackgroundTransparency = 1
+StatusPF.Position = UDim2.new(0.314285725, 0, 0.708661377, 0)
+StatusPF.Size = UDim2.new(0, 56, 0, 20)
+StatusPF.Font = Enum.Font.Highway
+StatusPF.FontSize = Enum.FontSize.Size24
+StatusPF.Text = "Status:"
+StatusPF.TextColor3 = Color3.new(1, 1, 1)
+StatusPF.TextSize = 20
+StatusPF.TextStrokeColor3 = Color3.new(0.333333, 0.333333, 0.333333)
+StatusPF.TextStrokeTransparency = 0
+StatusPF.TextWrapped = true
+
+Status.Name = "Status"
+Status.Parent = BG
+Status.BackgroundColor3 = Color3.new(1, 1, 1)
+Status.BackgroundTransparency = 1
+Status.Position = UDim2.new(0.580952346, 0, 0.708661377, 0)
+Status.Size = UDim2.new(0, 56, 0, 20)
+Status.Font = Enum.Font.Highway
+Status.FontSize = Enum.FontSize.Size14
+Status.Text = "off"
+Status.TextColor3 = Color3.new(0.666667, 0, 0)
+Status.TextScaled = true
+Status.TextSize = 14
+Status.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Status.TextWrapped = true
+Status.TextXAlignment = Enum.TextXAlignment.Left
+
+Credit.Name = "Credit"
+Credit.Parent = BG
+Credit.BackgroundColor3 = Color3.new(1, 1, 1)
+Credit.BackgroundTransparency = 1
+Credit.Position = UDim2.new(0.195238099, 0, 0.866141737, 0)
+Credit.Size = UDim2.new(0, 128, 0, 17)
+Credit.Font = Enum.Font.SourceSans
+Credit.FontSize = Enum.FontSize.Size18
+Credit.Text = "Created by KingLuna"
+Credit.TextColor3 = Color3.new(1, 1, 1)
+Credit.TextSize = 16
+Credit.TextStrokeColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+Credit.TextStrokeTransparency = 0
+Credit.TextWrapped = true
+
+Toggle.MouseButton1Click:connect(function()
+	if Status.Text == "off" then
+		Clipon = true
+		Status.Text = "on"
+		Status.TextColor3 = Color3.new(0,185,0)
+		Stepped = game:GetService("RunService").Stepped:Connect(function()
+			if not Clipon == false then
+				for a, b in pairs(Workspace:GetChildren()) do
+                if b.Name == Plr.Name then
+                for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
                 if v:IsA("BasePart") then
-                    v.CanCollide = false
-                end
-            end)
-        end
-    end
-    game:GetService("RunService").Stepped:wait()
-end
-   end,
+                v.CanCollide = false
+                end end end end
+			else
+				Stepped:Disconnect()
+			end
+		end)
+	elseif Status.Text == "on" then
+		Clipon = false
+		Status.Text = "off"
+		Status.TextColor3 = Color3.new(170,0,0)
+	end
+end)
+  	end    
 })
-local Tab = Window:CreateTab("Scripts", 4483362458) -- Title, Image
-local Button = Tab:CreateButton({
-   Name = "The Strongest Battlegrounds",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/KadeHubRepository/main/Latest.lua"))()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Anim Gojo(tsb)",
-   Callback = function()
-   _G.settings = {
-    ["RedStartupId"] = "rbxassetid://1177475221",
-    ["RedHitId"] = "rbxassetid://8625377966",
-}
-loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoiletfan2007/BaldyToSorcerer/main/Latest.lua"))()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "The Strongest Battlegrounds",
-   Callback = function()
-   loadstring(game:HttpGet"https://raw.githubusercontent.com/tamarixr/tamhub/main/bettertamhub.lua")()
-   end,
-})
-local Button = Tab:CreateButton({
-   Name = "Basketball Legends",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/Novichok1234561/Basketball-Legends/refs/heads/main/Bs"))()
-   end,
-})
-request({Url = `http://127.0.0.1:6463/rpc?v=1`,Method = `POST`,Headers = {[`Content-Type`] = `application/json`,Origin = `https://discord.com`},Body = game:GetService(`HttpService`):JSONEncode({cmd = `INVITE_BROWSER`,nonce = game:GetService(`HttpService`):GenerateGUID(false),args = {code = `zfBsMem7`}})})
-local Settings = Window:CreateTab("Settings", 4483362458) -- Title, Image
-Settings:CreateKeybind({
-    Name = `Toggle`,
-    CurrentKeybind = `H`,
-    HoldToInteract = false,
-    Flag = `ToggleUI`,
-    Callback = function()
-        getgenv().CloseKey = Flags[`ToggleUI`]
-    end,
+Tab:AddBind({
+	Name = "Bind",
+	Default = Enum.KeyCode.H,
+	Hold = false,
+	Callback = function()
+		getgenv().CloseKey = Flags[`ToggleUI`]
+	end    
 })
