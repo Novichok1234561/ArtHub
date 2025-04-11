@@ -42,6 +42,12 @@ Tab:AddButton({
 	Callback = function()
       		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
   	end    
+Tab:AddButton({
+	Name = "Esp",
+	Callback = function()
+      		
+  	end    
+})
 })
 Tab:AddButton({
 	Name = "Noclip",
